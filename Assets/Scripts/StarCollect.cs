@@ -6,7 +6,7 @@ public class StarCollect : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Star Collected");
+            GameManager.instance.AddScore(1);
             Destroy(gameObject);
         }
     }
