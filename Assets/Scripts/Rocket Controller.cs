@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class RocketController : MonoBehaviour
 {
-    public float upwardSpeed = 0.5f;
+    public float upwardSpeed = 6f;
     public float horizontalSpeed = 8f;
 
     private Rigidbody rb;
@@ -15,19 +15,18 @@ public class RocketController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Constant upward movement
-        rb.AddForce(Vector3.up * upwardSpeed, ForceMode.Acceleration);
+        float moveX = 0f;
 
-        // Move left
         if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
         {
-            rb.AddForce(Vector3.left * horizontalSpeed, ForceMode.Acceleration);
+            moveX = -horizontalSpeed;
         }
 
-        // Move right
         if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
         {
-            rb.AddForce(Vector3.right * horizontalSpeed, ForceMode.Acceleration);
+            moveX = horizontalSpeed;
         }
+
+        rb.linearVelocity = new Vector3(moveX, upwardSpeed, 0);
     }
 }
