@@ -3,9 +3,8 @@ using UnityEngine.InputSystem;
 
 public class RocketController : MonoBehaviour
 {
-    public float upwardSpeed = 6f;
+    public float upwardSpeed = 0.5f;
     public float horizontalSpeed = 8f;
-    public float boost = 20f;
 
     private Rigidbody rb;
 
@@ -18,12 +17,6 @@ public class RocketController : MonoBehaviour
     {
         // Constant upward movement
         rb.AddForce(Vector3.up * upwardSpeed, ForceMode.Acceleration);
-
-        // Boost upward
-        if (Keyboard.current.spaceKey.isPressed)
-        {
-            rb.AddForce(Vector3.up * boost, ForceMode.Acceleration);
-        }
 
         // Move left
         if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
